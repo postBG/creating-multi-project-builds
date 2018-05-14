@@ -1,2 +1,11 @@
-version '1.0-SNAPSHOT'
+// The allprojects block is used to add configuration items that will apply to all sub-projects as well as the root project.
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
 
+// the subprojects block can be used to add configurations items for all sub-projects only
+subprojects {
+    version = '1.0'
+}
