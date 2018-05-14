@@ -1,0 +1,22 @@
+apply plugin : 'java' // 프로덕션 코드는 자바로 작성하므로 추가
+apply plugin : 'groovy' // test 는 그루비로 작성할 것이므로 추가
+/*
+* The Application plugin allows you to bundle all of your applications JARs
+* as well as all of their transitive dependencies into a single ZIP or TAR file.
+*
+* It will also add two startup scripts (one for UNIX-like operations systems and one for Windows)
+* to the archive to make it easy for your users to run your application.
+* */
+apply plugin : 'application'
+
+// Java application의 엔트리 포인트
+mainClassName = 'greeter.Greeter'
+
+dependencies {
+    // Greeter.java 에서 GreeingFormatter 을 사용하므로 추가
+    compile project(':greeting-library')
+
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4', {
+        exclude module : 'groovy-all'
+    }
+}
